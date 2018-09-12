@@ -1,5 +1,4 @@
-{% set version = '1.5-5' %}
-
+{% set version = '1.5-7' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,36 +9,37 @@ package:
 source:
   fn: geosphere_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/geosphere_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/geosphere/geosphere_{{ version }}.tar.gz
-
-  sha256: 8b6fe012744fc45b88e0ef6f20e60e103ef013e761e99dcff3f9dceeedbdce6d
+    - {{ cran_mirror }}/src/contrib/geosphere_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/geosphere/geosphere_{{ version }}.tar.gz
+  sha256: 9d9b555e2d59a5ae174ae654652121f169fbc3e9cf66c2491bfbe0684b6dd8a0
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed  # [win]
+    - {{posix}}coreutils  # [win]
   host:
     - r-base
     - r-sp
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-sp
 
 test:
   commands:
-    - $R -e "library('geosphere')"  # [not win]
+    - $R -e "library('geosphere')"           # [not win]
     - "\"%R%\" -e \"library('geosphere')\""  # [win]
 
 about:
@@ -47,10 +47,16 @@ about:
   license: GPL (>= 3)
   summary: 'Spherical trigonometry for geographic applications. That is, compute distances and
     related measures for angular (longitude/latitude) locations. '
-
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
+
 extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
-    - druvus
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
+    - ConorIA
