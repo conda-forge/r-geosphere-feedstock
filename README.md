@@ -3,11 +3,15 @@ About r-geosphere
 
 Home: https://CRAN.R-project.org/package=geosphere
 
-Package license: GPL (>= 3)
+Package license: GPL-3.0-or-later
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-geosphere-feedstock/blob/main/LICENSE.txt)
 
 Summary: Spherical trigonometry for geographic applications. That is, compute distances and related measures for angular (longitude/latitude) locations. 
+
+Development: https://github.com/rspatial/geosphere
+
+Documentation: https://rspatial.org/raster/sphere/index.html
 
 Current build status
 ====================
