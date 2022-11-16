@@ -33,7 +33,7 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
-    - r-cpp
+    - r-rcpp
     - r-sp
   run:
     - r-base
