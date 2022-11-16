@@ -1,4 +1,4 @@
-{% set version = "1.5-14" %}
+{% set version = "1.5-18" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/geosphere_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/geosphere/geosphere_{{ version }}.tar.gz
-  sha256: f2c3a4ae1c87c86c123d48f134721c809fb33675cb5cd0959080049eabdbe42d
+  sha256: 99ff6ff050cc8c2d565b6bb1488607fc7950a6d448930f8d9642eccefbc6dac0
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
