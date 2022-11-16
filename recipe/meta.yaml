@@ -21,8 +21,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -30,10 +33,12 @@ requirements:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-cpp
     - r-sp
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-rcpp
     - r-sp
 
 test:
@@ -43,7 +48,9 @@ test:
 
 about:
   home: https://CRAN.R-project.org/package=geosphere
-  license: GPL (>= 3)
+  dev_url: https://github.com/rspatial/geosphere
+  doc_url: https://rspatial.org/raster/sphere/index.html
+  license: GPL-3.0-or-later
   summary: 'Spherical trigonometry for geographic applications. That is, compute distances and related measures for angular (longitude/latitude) locations. '
   license_family: GPL3
   license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
@@ -52,22 +59,3 @@ extra:
   recipe-maintainers:
     - ConorIA
     - conda-forge/r
-
-# Package: geosphere
-# Type: Package
-# Title: Spherical Trigonometry
-# Version: 1.5-10
-# Date: 2019-05-25
-# Imports: sp
-# Depends: R (>= 3.0.0)
-# Suggests: methods, raster
-# Authors@R: c( person("Robert J.", "Hijmans", role = c("cre", "aut"),  email = "r.hijmans@gmail.com"), person("Ed", "Williams", role = "ctb"), person("Chris", "Vennes", role = "ctb"))
-# Description: Spherical trigonometry for geographic applications. That is, compute distances and related measures for angular (longitude/latitude) locations.
-# License: GPL (>= 3)
-# LazyLoad: yes
-# NeedsCompilation: yes
-# Packaged: 2019-05-26 01:10:19 UTC; rhijm
-# Author: Robert J. Hijmans [cre, aut], Ed Williams [ctb], Chris Vennes [ctb]
-# Maintainer: Robert J. Hijmans <r.hijmans@gmail.com>
-# Repository: CRAN
-# Date/Publication: 2019-05-26 04:50:14 UTC
