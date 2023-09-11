@@ -3,6 +3,7 @@ About r-geosphere-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-geosphere-feedstock/blob/main/LICENSE.txt)
 
+
 About r-geosphere
 -----------------
 
@@ -15,6 +16,7 @@ Summary: Spherical trigonometry for geographic applications. That is, compute di
 Development: https://github.com/rspatial/geosphere
 
 Documentation: https://rspatial.org/raster/sphere/index.html
+
 About r-geosphere
 -----------------
 
@@ -71,6 +73,20 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1176&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-geosphere-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_r_base4.3" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_r_base4.2</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1176&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-geosphere-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_r_base4.2" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_r_base4.3</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=1176&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/r-geosphere-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_r_base4.3" alt="variant">
                 </a>
               </td>
             </tr><tr>
