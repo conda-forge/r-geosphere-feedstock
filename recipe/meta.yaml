@@ -1,4 +1,4 @@
-{% set version = "1.5-18" %}
+{% set version = "1.5-20" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/geosphere_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/geosphere/geosphere_{{ version }}.tar.gz
-  sha256: 99ff6ff050cc8c2d565b6bb1488607fc7950a6d448930f8d9642eccefbc6dac0
+  sha256: 98210f0533dbf39bde6271e2e597cf53ed233788419c04535026888857a69c05
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
